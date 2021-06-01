@@ -14,9 +14,10 @@ class SensorController(RequestHandler):
 
             if sensorlisterr is not None:
                 raise sensorlisterr
-
+            resultdict = {}
+            [resultdict.update(sensor.as_dict()) for sensor in result]
             self.set_status(200)
-            self.write(json.dumps([sensor.as_dict() for sensor in result]))
+            self.write(json.dumps(resultdict))
         except Exception as err:
             error = err
             self.set_status(500)

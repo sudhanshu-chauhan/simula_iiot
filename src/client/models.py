@@ -38,8 +38,9 @@ class Sensor(Base):
 
     def as_dict(self):
         return {
-            'name': getattr(self, 'machine') + ":" + getattr(self, 'name'),
-            'value': random.random(),
-            'timestamp': time.time()
+            getattr(self, 'machine') + ":" + getattr(self, 'name'):
+            {
+                'value': random.random(),
+                'timestamp': time.time()
+            }
         }
-
