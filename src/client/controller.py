@@ -16,6 +16,7 @@ class SensorController(RequestHandler):
                 raise sensorlisterr
             resultdict = {}
             [resultdict.update(sensor.as_dict()) for sensor in result]
+            self.set_header('Content-Type','application/json')
             self.set_status(200)
             self.write(json.dumps(resultdict))
         except Exception as err:
